@@ -67,7 +67,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     "Bearer " + ctx.req.cookies.authorization;
 
   const response = await api.get(
-    "https://simplenote.vercel.app/api/controllers/noteController/findUserNote"
+    "/api/controllers/noteController/findUserNote"
   );
   // console.log(response)
   return {

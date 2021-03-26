@@ -60,23 +60,23 @@ export function UserProvider({ children }: UserProviderProps) {
     }
   }, [isLoggedIn]);
 
-  async function promise() {
-    return await api
-      .get("/api/controllers/userController/findUser")
-      .then((response) => {
-        setUsername(response.data.name);
-        setEmail(response.data.email);
-        setPassword(response.data.password);
-        setAvatar(response.data.avatar);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+  // async function promise() {
+  //   return await api
+  //     .get("/api/controllers/userController/findUser")
+  //     .then((response) => {
+  //       setUsername(response.data.name);
+  //       setEmail(response.data.email);
+  //       setPassword(response.data.password);
+  //       setAvatar(response.data.avatar);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
 
-  useEffect(() => {
-    promise();
-  }, [email, username, password, avatar]);
+  // useEffect(() => {
+  //   promise();
+  // }, [email, username, password, avatar]);
 
   function openProfileModal() {
     setIsOpenProfileModal(true);
