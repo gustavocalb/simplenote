@@ -147,7 +147,7 @@ export function TextProvider({ children, notes }: TextProviderProps) {
 
   async function handleCreateNote(form) {
     try {
-      const response = await axios.post(
+      const response = await api.post(
         "/api/controllers/noteController/createNewNote",
         form
       );
