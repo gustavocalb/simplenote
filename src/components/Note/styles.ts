@@ -43,7 +43,7 @@ export const Container = styled.div`
     color: #ededed;
   }
 
-  .welcome .buttons button {
+  .welcome .buttons a {
     width: 50%;
 
     padding: 1rem;
@@ -68,7 +68,7 @@ export const Container = styled.div`
     transition: background 300ms;
   }
 
-  .welcome button:hover {
+  .welcome a:hover {
     background: #6f7bf7;
     box-shadow: 1px 1px .5rem 3px rgba(0,0,0,0.1);
   }
@@ -95,4 +95,24 @@ export const Container = styled.div`
   .images .note img {
     width: 70%;
   }
+`;
+
+export const ContainerNewNote = styled.div`
+    .container {
+    width: 100%;
+    background: red;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .container .newNote {
+    width: 100%;
+  }
+
+  .container .image {
+    width: 100%;
+  }
+
 `;

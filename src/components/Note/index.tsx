@@ -27,7 +27,7 @@ export function Note() {
                 vamos fazer algumas anotações?
               </p>
               <div className="buttons">
-                <button>Comece a agora</button>
+                <a href="/login">Cemece agora</a>
               </div>
             </div>
             <div className="images">
@@ -45,23 +45,23 @@ export function Note() {
           {notesState.length === 0 || notesState === undefined ? (
             <>
               <h2
-                style={{
-                  color: "#fff",
-                  textShadow: "1rem 1rem 1rem 1rem #000",
-                }}
-              >
-                Nenhuma anotação encontrada
-                <p
                   style={{
                     color: "#fff",
-                    textAlign: "center",
-                    marginTop: "1px",
+                    textShadow: "1rem 1rem 1rem 1rem #000",
                   }}
                 >
-                  crie novas anotações.
-                </p>
-              </h2>
-              <img src="icons/add-note.svg" alt="" />
+                  Nenhuma anotação foi encontrada
+                  <p
+                    style={{
+                      color: "#fff",
+                      textAlign: "center",
+                      marginTop: "1px",
+                    }}
+                  >
+                    crie novas anotações.
+                  </p>
+                </h2>
+                  <img src="icons/add-note.svg" alt="" />
             </>
           ) : (
             notesState.map((note: TextCardProps) => {

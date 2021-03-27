@@ -6,6 +6,7 @@ import { Button } from "../components/Button/Button";
 import { Note } from "../components/Note";
 import { ProfileModal } from "../components/ProfileModal/ProfileModal";
 import Siderbar from "../components/Sidebar/Sidebar";
+import { WelcomeModal } from "../components/WelcomeModal/WelcomeModal";
 import { TextContext, TextProvider } from "../context/TextContext";
 import { UserContext, UserProvider } from "../context/UserContext";
 import api from "../services/api";
@@ -31,7 +32,11 @@ export default function Home(props: Props) {
     setTheme(theme.title === "light" ? dark : light);
   }
 
-  const { isLoggedIn, isOpenProfileModal } = useContext(UserContext);
+  const { 
+    isLoggedIn,
+    isOpenProfileModal,
+    isOpenWelcomeModal
+  } = useContext(UserContext);
 
   return (
     <>
@@ -52,6 +57,7 @@ export default function Home(props: Props) {
         </TextProvider>
       </ThemeProvider>
       {isOpenProfileModal && <ProfileModal />}
+      {isOpenWelcomeModal && <WelcomeModal />}
     </>
   );
 }
@@ -67,7 +73,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     "Bearer " + ctx.req.cookies.authorization;
 
   const response = await api.get(
-    "/api/controllers/noteController/findUserNote"
+    "http://localhost:3000/api/controllers/noteController/findUserNote"
   );
   // console.log(response)
   return {

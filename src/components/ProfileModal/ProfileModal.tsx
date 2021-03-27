@@ -60,12 +60,23 @@ export function ProfileModal() {
               </div>
                 <div className="input">
                 <label>Username</label>
-                <input name="name" type="text" value={form.name} onChange={formChange} onKeyUp={handleKeyUp} autoComplete="off" required/>
-
+                <div className="box-data">
+                  {form.name}
+                  <button>
+                      editar
+                  </button>
+                </div>
                 <label>Email</label>
-                <input name="title" type="text" readOnly={true} value={form.email} onChange={formChange} onKeyUp={handleKeyUp} autoComplete="off" required/>
+               <div className="box-data">
+                 {form.email}
+                 <button>
+                      editar
+                  </button>
+               </div>
                 <label htmlFor="">Password</label>
-                <input name="description" id="description" readOnly={true} value={form.password} onChange={formChange} required />
+                  <div className="box-data">
+                    
+                  </div>
                 </div>
               </header>
               {/* <div className="buttons">

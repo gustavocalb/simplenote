@@ -73,7 +73,7 @@ export default function Textcard(note: TextCardProps) {
                 )
               }
             >
-              Ver mais
+              Expandir
             </button>
           </div>
         </div>

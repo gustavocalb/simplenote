@@ -17,7 +17,7 @@ export const Overlay = styled.div`
   }
 
   .container {
-    background: #4f4f4f;
+    background: #616161;
     width: 40%;
     max-width: 40%;
     max-height: 40%;
@@ -99,6 +99,7 @@ export const Overlay = styled.div`
     height: 10%;
 
     background-color: #eb4236;
+    box-shadow: 0 0 60px rgba(0, 0, 0, .5);
 
     margin-top: 4rem;
 
@@ -107,17 +108,61 @@ export const Overlay = styled.div`
     border: none;
     border-radius: 0.2rem;
   }
+  
+  .bnt-del button:hover {
+    background: #ff2617;
+  }
 
   .container header .input {
     width: 100%;
 
     display: flex;
     justify-content: space-between;
-    align-items: left;
     flex-direction: column;
   }
-  .container header input {
-    width: 90%;
+  .container header .input .box-data {
+    width: 100%;
+    height: 50%;
+
+    padding-left: 1rem;
+
+    color: var(--title);
+
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
+    border-radius: 0.3rem;
+
+    background: rgb(179, 179, 179);
+    outline: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+  }
+
+  .container header .input .box-data button {
+    width: 15%;
+    margin: auto 1rem;
+    padding: .2rem;
+
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 0.3rem;
+
+    background: #d9d9d9;
+
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: background 200ms;
+  }
+
+  .container header .input .box-data button:hover {
+    background: #d1d1d1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
 
   .container label {
@@ -128,20 +173,6 @@ export const Overlay = styled.div`
     text-align: left;
 
     margin: 0.3rem 0;
-  }
-
-  .container input {
-    width: 100%;
-    height: 3rem;
-
-    margin: 0.5rem 0 0 0;
-    padding-left: 1rem;
-
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    border-radius: 0.3rem;
-
-    background: rgb(179, 179, 179);
-    outline: none;
   }
 
   .container section {

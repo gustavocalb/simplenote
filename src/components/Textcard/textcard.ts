@@ -53,13 +53,8 @@ export const Container = styled.div`
     justify-content: right;
   }
   .title button {
-    /* width: 1rem; */
-
-    position: relative;
-
-    /* margin-top: 1rem; */
-
-    /* display:none; */
+    font-family: 'Inter', sans-serif;
+    color: (--title);
 
     background: transparent;
     outline: none;
@@ -90,7 +85,7 @@ export const Container = styled.div`
     /* max-height: 85%; */
 
     padding-left: 1rem;
-    margin: 0.1rem auto;
+    margin: 0.3rem auto;
 
     /* background: #a3a3a3; */
     background: none;

@@ -18,6 +18,9 @@ interface UserContextData {
   avatar: string;
   isLoggedIn: boolean;
   isOpenProfileModal: boolean;
+  isOpenWelcomeModal: boolean;
+  openWelcomeModal: () => void;
+  closeWelcomeModal: () => void;
   changeStateIsloggedInTrue: () => void;
   changeStateIsloggedFalse: () => void;
   setAvatarUrl: (url: string) => void;
@@ -40,6 +43,7 @@ export const UserContext = createContext({} as UserContextData);
 export function UserProvider({ children }: UserProviderProps) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isOpenProfileModal, setIsOpenProfileModal] = useState(false);
+  const [isOpenWelcomeModal, setIsOpenWelcomeModal] = useState(true);
 
   const [message, setMessage] = useState(null);
   const [username, setUsername] = useState("");
@@ -60,23 +64,24 @@ export function UserProvider({ children }: UserProviderProps) {
     }
   }, [isLoggedIn]);
 
-  // async function promise() {
-  //   return await api
-  //     .get("/api/controllers/userController/findUser")
-  //     .then((response) => {
-  //       setUsername(response.data.name);
-  //       setEmail(response.data.email);
-  //       setPassword(response.data.password);
-  //       setAvatar(response.data.avatar);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
+  async function promise() {
+    return await api
+      .get("/api/controllers/userController/findUser")
+      .then((response) => {
+        setUsername(response.data.name);
+        setEmail(response.data.email);
+        setPassword(response.data.password);
+        setAvatar(response.data.avatar);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
-  // useEffect(() => {
-  //   promise();
-  // }, [email, username, password, avatar]);
+  useEffect(() => {
+    promise();
+    
+  }, [email, username, password, avatar]);
 
   function openProfileModal() {
     setIsOpenProfileModal(true);
@@ -96,6 +101,18 @@ export function UserProvider({ children }: UserProviderProps) {
 
   function setAvatarUrl(url: string) {
     setAvatar(url);
+  }
+  
+  function openWelcomeModal() {
+    setIsOpenWelcomeModal(true)
+
+    setInterval(() => {
+      setIsOpenWelcomeModal(false)
+    }, 8000)
+  }
+
+  function closeWelcomeModal() {
+    setIsOpenWelcomeModal(false)
   }
 
   async function handleLoginSubmit(form) {
@@ -121,11 +138,7 @@ export function UserProvider({ children }: UserProviderProps) {
   }
 
   async function handleRegisterSubmit(form) {
-    await api
-      .post(
-        "/api/controllers/userController/register",
-        form
-      )
+    await api.post("/api/controllers/userController/register", form )
       .then((response) => {
         setMessage(response.data.message);
 
@@ -133,12 +146,15 @@ export function UserProvider({ children }: UserProviderProps) {
 
         setEmail(response.data.user.email);
         setUsername(response.data.user.name);
-        // setAvatarUrl(response.data.user.avatar)
-        setIsLoggedIn(true);
+        setAvatar(response.data.user.avatar)
+
+        setIsLoggedIn(true)
 
         Cookies.set("auth", String("true"));
 
         Router.push("/");
+
+        openWelcomeModal()
       })
       .catch((error) => {
         setMessage(error.response.data.message);
@@ -155,6 +171,9 @@ export function UserProvider({ children }: UserProviderProps) {
         setAvatarUrl,
         isLoggedIn,
         isOpenProfileModal,
+        isOpenWelcomeModal,
+        openWelcomeModal,
+        closeWelcomeModal,
         changeStateIsloggedInTrue,
         changeStateIsloggedFalse,
         handleLoginSubmit,
