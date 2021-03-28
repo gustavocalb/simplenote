@@ -17,6 +17,10 @@ export function ProfileModal() {
     password,
     username,
     closeProfileModal,
+    openEditEmailModal,
+    openEditUsernameModal,
+    isOpenEditEmailModal,
+    isOpenEditUsernameModal,
     avatar
   } = useContext(UserContext)
 
@@ -62,14 +66,14 @@ export function ProfileModal() {
                 <label>Username</label>
                 <div className="box-data">
                   {form.name}
-                  <button>
+                  <button onClick={openEditUsernameModal}>
                       editar
                   </button>
                 </div>
                 <label>Email</label>
                <div className="box-data">
                  {form.email}
-                 <button>
+                 <button onClick={openEditEmailModal}>
                       editar
                   </button>
                </div>

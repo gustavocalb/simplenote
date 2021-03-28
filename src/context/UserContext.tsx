@@ -19,8 +19,14 @@ interface UserContextData {
   isLoggedIn: boolean;
   isOpenProfileModal: boolean;
   isOpenWelcomeModal: boolean;
+  isOpenEditEmailModal: boolean;
+  isOpenEditUsernameModal: boolean;
   openWelcomeModal: () => void;
   closeWelcomeModal: () => void;
+  openEditEmailModal: () => void;
+  closeEditEmailModal: () => void;
+  openEditUsernameModal: () => void;
+  closeEditUsernameModal: () => void;
   changeStateIsloggedInTrue: () => void;
   changeStateIsloggedFalse: () => void;
   setAvatarUrl: (url: string) => void;
@@ -43,7 +49,9 @@ export const UserContext = createContext({} as UserContextData);
 export function UserProvider({ children }: UserProviderProps) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isOpenProfileModal, setIsOpenProfileModal] = useState(false);
-  const [isOpenWelcomeModal, setIsOpenWelcomeModal] = useState(true);
+  const [isOpenWelcomeModal, setIsOpenWelcomeModal] = useState(false);
+  const [isOpenEditEmailModal, setIsOpenEditEmailModal] = useState(false);
+  const [isOpenEditUsernameModal, setIsOpenEditUsernameModal] = useState(false);
 
   const [message, setMessage] = useState(null);
   const [username, setUsername] = useState("");
@@ -115,6 +123,22 @@ export function UserProvider({ children }: UserProviderProps) {
     setIsOpenWelcomeModal(false)
   }
 
+  function openEditEmailModal() {
+    setIsOpenEditEmailModal(true)
+  }
+
+  function closeEditEmailModal() {
+    setIsOpenEditEmailModal(false)
+  }
+
+  function openEditUsernameModal() {
+    setIsOpenEditEmailModal(true)
+  }
+
+  function closeEditUsernameModal() {
+    setIsOpenEditUsernameModal(false)
+  }
+
   async function handleLoginSubmit(form) {
     await api
       .post("/api/controllers/userController/login", form)
@@ -172,6 +196,12 @@ export function UserProvider({ children }: UserProviderProps) {
         isLoggedIn,
         isOpenProfileModal,
         isOpenWelcomeModal,
+        isOpenEditUsernameModal,
+        isOpenEditEmailModal,
+        openEditEmailModal,
+        closeEditEmailModal,
+        openEditUsernameModal,
+        closeEditUsernameModal,
         openWelcomeModal,
         closeWelcomeModal,
         changeStateIsloggedInTrue,
