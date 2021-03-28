@@ -32,7 +32,7 @@ export function ViewNoteModal(note: TextCardProps) {
   return (
     <Overlay>
       <div className="overlay">
-        <div className="container">
+        <div className="container animate__zoomIn">
           {isOpenTextEditModal === true ? (
             closeViewModal
           ) : (

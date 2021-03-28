@@ -27,7 +27,7 @@ export function ChangeAvatarModal() {
   return (
     <Overlay>
       <div className="overlay">
-        <div className="container">
+        <div className="container animate__zoomIn">
           <header>
             <img src={userAvatar} alt="" />
           </header>

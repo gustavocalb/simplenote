@@ -10,6 +10,15 @@ import { Router } from "next/router";
 import { UserContext } from "../../context/UserContext";
 import { ChangeAvatarModal } from "../ChangeAvatarModal/ChangeAvatarModal";
 import { AvatarContext } from "../../context/AvatarContext";
+import { EditEmailModal } from "../EditEmailModal/EditEmailModal";
+import { EditUsernameModal } from "../EditUsernameModal/EditUsernameModal";
+import { EditedEmailModal } from "../EditedEmailModal/EditedEmailModal";
+
+export interface UserProps {
+  email: string;
+  name: string;
+  avatar: string;
+}
 
 export function ProfileModal() {
   const { 
@@ -21,6 +30,7 @@ export function ProfileModal() {
     openEditUsernameModal,
     isOpenEditEmailModal,
     isOpenEditUsernameModal,
+    isOpenEditedEmailAlert,
     avatar
   } = useContext(UserContext)
 
@@ -28,28 +38,15 @@ export function ProfileModal() {
     openAvatarModal,
     isOpenAvatarModal,
   } = useContext(AvatarContext)
-  
-  const [form, setForm] = useState({
-    name: username,
-    email: email,
-    password: password,
-  })
-  
-  function formChange(event) {
-    setForm({ ...form, [event.target.name]: event.target.value })
-  }
-  
-  const handleKeyUp = useCallback((event: React.FormEvent<HTMLInputElement>) => {
-    event.currentTarget
-    
-    event.currentTarget.maxLength = 17
-  }, [])
+
+  const [userEmail, setUserEmail] = useState(email)
+  const [name, setName] = useState(username)
   
   return (
     <>
     <Overlay>
         <div className="overlay">
-          <div className="container">
+          <div className="container animate__zoomIn">
             <form method="post">
               <header>
               <div className="image">
@@ -65,15 +62,15 @@ export function ProfileModal() {
                 <div className="input">
                 <label>Username</label>
                 <div className="box-data">
-                  {form.name}
-                  <button onClick={openEditUsernameModal}>
+                  {name}
+                  <button type="button" onClick={openEditUsernameModal}>
                       editar
                   </button>
                 </div>
                 <label>Email</label>
                <div className="box-data">
-                 {form.email}
-                 <button onClick={openEditEmailModal}>
+                 {userEmail}
+                 <button type="button" onClick={openEditEmailModal}>
                       editar
                   </button>
                </div>
@@ -83,11 +80,6 @@ export function ProfileModal() {
                   </div>
                 </div>
               </header>
-              {/* <div className="buttons">
-              <button type="submit">
-                  Salvar <img src="icons/check.svg" alt=""/>
-                </button>
-              </div> */}
             </form>
             <div className="bnt-close">
               <button type="button" onClick={closeProfileModal}>
@@ -98,6 +90,8 @@ export function ProfileModal() {
         </div >
       </Overlay>
       {isOpenAvatarModal && <ChangeAvatarModal/>}
+      {isOpenEditEmailModal && <EditEmailModal />}
+      {isOpenEditUsernameModal && <EditUsernameModal />}
     </>
   )
   }

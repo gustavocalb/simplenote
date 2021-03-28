@@ -9,11 +9,14 @@ export const Overlay = styled.div`
   left: 0;
   right: 0;
 
+  transition: background 1000ms;
+
   /* margin: auto 1rem; */
 
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .container {
@@ -29,6 +32,9 @@ export const Overlay = styled.div`
 
   display: flex;
   flex-direction: column;
+
+  animation: zoomIn;
+  animation-duration: 0.7s;
 }
 
 .container .bnt-close button {

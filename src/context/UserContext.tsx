@@ -21,6 +21,7 @@ interface UserContextData {
   isOpenWelcomeModal: boolean;
   isOpenEditEmailModal: boolean;
   isOpenEditUsernameModal: boolean;
+  isOpenEditedEmailAlert: boolean;
   openWelcomeModal: () => void;
   closeWelcomeModal: () => void;
   openEditEmailModal: () => void;
@@ -36,6 +37,8 @@ interface UserContextData {
     email: string;
     password: string;
   }) => void;
+  handleEditEmail: (form: { email: string; password: string }) => void;
+  handleEditUsername: (form: { name: string; password: string }) => void;
   openProfileModal: () => void;
   closeProfileModal: () => void;
   message: string;
@@ -52,14 +55,13 @@ export function UserProvider({ children }: UserProviderProps) {
   const [isOpenWelcomeModal, setIsOpenWelcomeModal] = useState(false);
   const [isOpenEditEmailModal, setIsOpenEditEmailModal] = useState(false);
   const [isOpenEditUsernameModal, setIsOpenEditUsernameModal] = useState(false);
+  const [isOpenEditedEmailAlert, setIsOpenEditedEmailAlert] = useState(false);
 
   const [message, setMessage] = useState(null);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [avatar, setAvatar] = useState("icons/user.svg");
-
-  console.log("login", avatar);
 
   useEffect(() => {
     const auth = Cookies.get("auth");
@@ -88,7 +90,6 @@ export function UserProvider({ children }: UserProviderProps) {
 
   useEffect(() => {
     promise();
-    
   }, [email, username, password, avatar]);
 
   function openProfileModal() {
@@ -110,33 +111,40 @@ export function UserProvider({ children }: UserProviderProps) {
   function setAvatarUrl(url: string) {
     setAvatar(url);
   }
-  
+
   function openWelcomeModal() {
-    setIsOpenWelcomeModal(true)
+    setIsOpenWelcomeModal(true);
 
     setInterval(() => {
-      setIsOpenWelcomeModal(false)
-    }, 8000)
+      setIsOpenWelcomeModal(false);
+    }, 8000);
   }
 
   function closeWelcomeModal() {
-    setIsOpenWelcomeModal(false)
+    setIsOpenWelcomeModal(false);
   }
 
   function openEditEmailModal() {
-    setIsOpenEditEmailModal(true)
+    setIsOpenEditEmailModal(true);
   }
 
   function closeEditEmailModal() {
-    setIsOpenEditEmailModal(false)
+    setIsOpenEditEmailModal(false);
   }
 
   function openEditUsernameModal() {
-    setIsOpenEditEmailModal(true)
+    setIsOpenEditUsernameModal(true);
   }
 
   function closeEditUsernameModal() {
-    setIsOpenEditUsernameModal(false)
+    setIsOpenEditUsernameModal(false);
+  }
+  function openEditedEmailModal() {
+    setIsOpenEditedEmailAlert(true);
+
+    setInterval(() => {
+      setIsOpenEditedEmailAlert(false);
+    }, 8000);
   }
 
   async function handleLoginSubmit(form) {
@@ -162,7 +170,8 @@ export function UserProvider({ children }: UserProviderProps) {
   }
 
   async function handleRegisterSubmit(form) {
-    await api.post("/api/controllers/userController/register", form )
+    await api
+      .post("/api/controllers/userController/register", form)
       .then((response) => {
         setMessage(response.data.message);
 
@@ -170,18 +179,37 @@ export function UserProvider({ children }: UserProviderProps) {
 
         setEmail(response.data.user.email);
         setUsername(response.data.user.name);
-        setAvatar(response.data.user.avatar)
+        setAvatar(response.data.user.avatar);
 
-        setIsLoggedIn(true)
+        setIsLoggedIn(true);
 
         Cookies.set("auth", String("true"));
 
         Router.push("/");
 
-        openWelcomeModal()
+        openWelcomeModal();
       })
       .catch((error) => {
         setMessage(error.response.data.message);
+      });
+  }
+
+  async function handleEditEmail(form) {
+    await api
+      .post("/api/controllers/userController/changeEmail", form)
+      .then((response) => {
+        setEmail(response.data);
+        closeEditEmailModal();
+        openEditedEmailModal();
+      });
+  }
+
+  async function handleEditUsername(form) {
+    await api
+      .post("/api/controllers/userController/changeUsername", form)
+      .then((response) => {
+        setUsername(response.data);
+        closeEditUsernameModal();
       });
   }
 
@@ -198,18 +226,21 @@ export function UserProvider({ children }: UserProviderProps) {
         isOpenWelcomeModal,
         isOpenEditUsernameModal,
         isOpenEditEmailModal,
+        isOpenEditedEmailAlert,
         openEditEmailModal,
-        closeEditEmailModal,
         openEditUsernameModal,
-        closeEditUsernameModal,
         openWelcomeModal,
+        openProfileModal,
+        closeProfileModal,
+        closeEditEmailModal,
+        closeEditUsernameModal,
         closeWelcomeModal,
         changeStateIsloggedInTrue,
         changeStateIsloggedFalse,
         handleLoginSubmit,
         handleRegisterSubmit,
-        openProfileModal,
-        closeProfileModal,
+        handleEditEmail,
+        handleEditUsername,
         message,
       }}
     >

@@ -53,6 +53,7 @@ export const Container = styled.div`
   }
 
   header h3 {
+    text-align: center;
     /* margin: .7rem auto; */
     color: ${(props) => props.theme.colors.text.color};
     transition: color 1000ms;

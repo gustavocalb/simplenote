@@ -3,6 +3,7 @@ import Router from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { ThemeProvider, DefaultTheme } from "styled-components";
 import { Button } from "../components/Button/Button";
+import { EditedEmailModal } from "../components/EditedEmailModal/EditedEmailModal";
 import { Note } from "../components/Note";
 import { ProfileModal } from "../components/ProfileModal/ProfileModal";
 import Siderbar from "../components/Sidebar/Sidebar";
@@ -35,7 +36,8 @@ export default function Home(props: Props) {
   const { 
     isLoggedIn,
     isOpenProfileModal,
-    isOpenWelcomeModal
+    isOpenWelcomeModal,
+    isOpenEditedEmailAlert
   } = useContext(UserContext);
 
   return (
@@ -58,6 +60,7 @@ export default function Home(props: Props) {
       </ThemeProvider>
       {isOpenProfileModal && <ProfileModal />}
       {isOpenWelcomeModal && <WelcomeModal />}
+      {isOpenEditedEmailAlert && <EditedEmailModal />}
     </>
   );
 }

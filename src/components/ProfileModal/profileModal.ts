@@ -29,6 +29,9 @@ export const Overlay = styled.div`
 
     display: flex;
     /* justify-content: center; */
+
+    animation: zoomIn;
+    animation-duration: 0.7s;
   }
   .container .description h2 {
     color: white;

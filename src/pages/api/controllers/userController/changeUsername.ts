@@ -10,27 +10,22 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const token = req.cookies.authorization
     // const [, token] = req.headers.authorization.split(' ')
 
-    const { password, email } = req.body
+    const { password, name } = req.body
 
     try {
       await connect()
 
       const payload = await jwt.verify(token)
-      const userr = await User.findById(payload.user).select('+password');
+      const user = await User.findById(payload.user).select('+password');
 
-      const user = await User.findOne({ email });
-
-      if (user) {
-        return res.status(400).send({ message: 'E-mail invalido' });
-      }
     
-      if (!await bcrypt.compare(password, userr.password)) {
+      if (!await bcrypt.compare(password, user.password)) {
         return res.status(400).send({ message: 'Password invalido' });
       }
 
-      await User.findOneAndUpdate({ email: userr.email}, { email: email },
+      await User.findOneAndUpdate({ email: user.email}, { name: name },
       {new: true}).then(response => {
-        return res.json(response.email)
+        return res.json(response.name)
       })
 
     } catch (error) {

@@ -10,6 +10,8 @@ export const Overlay = styled.div`
     right: 0;
 
     /* margin: auto 1rem; */
+    
+    transition: background 1000ms;
 
     display: flex;
     justify-content: center;
@@ -29,6 +31,9 @@ export const Overlay = styled.div`
 
     display: flex;
     /* justify-content: center; */
+
+    animation: zoomIn;
+    animation-duration: 0.5s;
   }
 
   .container h2 {

@@ -1,15 +1,15 @@
 import { useContext, useState } from "react"
 import { UserContext } from "../../context/UserContext"
-import { Overlay } from './editEmailModal'
+import { Overlay } from './editUsernameModal'
 
-export function EditEmailModal() {
+export function EditUsernameModal() {
   const {
-    closeEditEmailModal,
-    handleEditEmail
+    closeEditUsernameModal,
+    handleEditUsername
   } = useContext(UserContext)
 
   const [form, setForm] = useState({
-    email: "",
+    name: "",
     password: "",
   });
 
@@ -20,38 +20,36 @@ export function EditEmailModal() {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    handleEditEmail(form);
+    handleEditUsername(form);
   }
 
   return (
     <Overlay>
       <div className="overlay">
         <div className="container animate__zoomIn">
-          <h2>Mudança de e-mail</h2>
-          <p>Insira um e-mail e sua senha atual</p>
+          <h2>Mudança de username</h2>
+          <p>Insira um username e sua senha atual</p>
         <form method="post" onSubmit={handleSubmit}>
-          <label>Novo e-mail</label>
-          <input name="email" autoComplete="off" type="email" onChange={formChange}/>
+          <label>Username</label>
+          <input name="name" autoComplete="off" type="text" onChange={formChange}/>
 
-          <label>Password</label>
+          <label>Senha atual</label>
           <input name="password" type="password" onChange={formChange}/>
           <div className="buttons">
               <button
                 type="button"
                 className="bnt-del"
-                onClick={closeEditEmailModal}
+                onClick={closeEditUsernameModal}
               >
                 Cancelar
-                {/* <img src="/icons/close.svg" alt=""/> */}
               </button>
               <button type="submit">
                 Salvar
-                {/* <img src="icons/check.svg" alt=""/> */}
               </button>
             </div>
         </form>
         <div className="bnt-close">
-              <button type="button" onClick={closeEditEmailModal}>
+              <button type="button" onClick={closeEditUsernameModal}>
                   <img src="/icons/close.svg" alt="Fechar modal" />
                 </button>
               </div>

@@ -47,7 +47,7 @@ export function TextEditModal(note: TextCardProps) {
   return (
     <Overlay>
       <div className="overlay">
-        <div className="container">
+        <div className="container animate__zoomIn">
           {/* <h2>Nova nota</h2> */}
           <form onSubmit={handleSubmit}>
             <header>
