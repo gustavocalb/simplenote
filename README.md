@@ -12,10 +12,11 @@
 <br>
 
 <div
-  display: 'flex',
-  justify-content: "space-everly",
-  align-items: 'center',
-  flex-wrap: 'wrap'
+  align="center"
+  display='flex',
+  justify-content="center",
+  align-items='center',
+  flex-wrap='wrap'
   >
     <img width="30%" src="public/github/home.png" alt="teste"/>
     <img width="30%" src="public/github/main-light.png" alt="teste"/>
