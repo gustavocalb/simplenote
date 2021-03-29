@@ -11,9 +11,19 @@
 
 <br>
 
-<p align="center">
-  <img alt="Moveit" src="public/icons/logo.svg" width="120px">
-</p>
+<div
+  display: 'flex',
+  justify-content: "space-everly",
+  align-items: 'center',
+  flex-wrap: 'wrap'
+  >
+    <img src="./.github/home" alt=""/>
+    <img src="./.github/main-light" alt=""/>
+    <img src="./.github/main-dark" alt=""/>
+    <img src="./.github/main" alt=""/>
+    <img src="./.github/login" alt=""/>
+    <img src="./.github/register" alt=""/>
+</div>
 
 ## 🚀 Tecnologias
 
@@ -25,7 +35,7 @@ Esse projeto foi desenvolvido utilizando as seguintes tecnologias:
 
 ## 💻 Projeto
 
-O Simple Note é um simples website para você fazer suas anotacoes  💜 
+O Simple Note é um simples website para você fazer suas anotacoes 💜 
 
 Este é um projeto desenvolvido por **[Gustavo Carvalho](https://github.com/FireShark688)**
 
