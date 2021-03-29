@@ -14,7 +14,7 @@
 <div
   align="center"
   display='flex',
-  justify-content="center",
+  justify-content="space-everly",
   align-items='center',
   flex-wrap='wrap'
   >
