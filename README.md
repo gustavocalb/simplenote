@@ -18,12 +18,12 @@
   align-items='center',
   flex-wrap='wrap'
   >
-    <img width="30%" src="public/github/home.png" alt="teste"/>
-    <img width="30%" src="public/github/main-light.png" alt="teste"/>
-    <img width="30%" src="public/github/main-dark.png" alt="teste"/>
-    <img width="30%" src="public/github/main.png" alt="teste"/>
-    <img width="30%" src="public/github/login.png" alt="teste"/>
-    <img width="30%" src="public/github/register.png" alt="teste"/>
+    <img width="50%" src="public/github/home.png" alt="teste"/>
+    <img width="50%" src="public/github/main-light.png" alt="teste"/>
+    <img width="50%" src="public/github/main-dark.png" alt="teste"/>
+    <img width="50%" src="public/github/main.png" alt="teste"/>
+    <img width="50%" src="public/github/login.png" alt="teste"/>
+    <img width="50%" src="public/github/register.png" alt="teste"/>
 </div>
 
 ## 🚀 Tecnologias
