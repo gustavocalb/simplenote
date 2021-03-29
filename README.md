@@ -36,10 +36,14 @@ Esse projeto foi desenvolvido utilizando as seguintes tecnologias:
 
 ## 💻 Projeto
 
-O Simple Note é um simples website para você fazer suas anotacoes 💜 
+O Simple Note é um simples website para você fazer suas anotações 💜 
 
 Este é um projeto desenvolvido por **[Gustavo Carvalho](https://github.com/FireShark688)**
 
 ## 📝 Licença
 
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
+
+##
+
+<h2 align="center">Com muito carinho Gustavo Carvalho</h2>
