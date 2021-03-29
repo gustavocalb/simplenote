@@ -46,4 +46,4 @@ Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para
 
 ##
 
-<h2 align="center">Com muito carinho Gustavo Carvalho</h2>
+<p align="center">Com muito carinho Gustavo Carvalho</p>
