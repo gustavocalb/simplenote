@@ -44,6 +44,4 @@ Este é um projeto desenvolvido por **[Gustavo Carvalho](https://github.com/Fire
 
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
 
-##
-
 <p align="center">Made with 💜  by Gustavo Carvalho </p>
