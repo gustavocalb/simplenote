@@ -27,9 +27,8 @@ Esse projeto foi desenvolvido utilizando as seguintes tecnologias:
 
 O Simple Note é um simples website para você fazer suas anotacoes  💜 
 
-Este é um projeto desenvolvido durante a **[Next Level Week](https://nextlevelweek.com/)**, realizada pela **[@Rocketseat](https://github.com/Rocketseat)** durante os dias 22 a 28 de Fevereiro de 2021.
+Este é um projeto desenvolvido por **[Gustavo Carvalho](https://github.com/FireShark688)**
 
 ## 📝 Licença
 
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
-
